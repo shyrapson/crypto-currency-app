@@ -4,12 +4,12 @@ import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
-import { Cryptocurrencies,News } from "../components";
+import { Cryptocurrencies, News } from "../components";
 
 const { Title } = Typography;
 
 function Homepage() {
-  const { data, isFetching } = useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery(10);
 
   const globalStats = data?.data?.stats;
   if (isFetching) return "loading...";
@@ -49,15 +49,24 @@ function Homepage() {
         </Col>
       </Row>
       <div className="home-heading-container">
-        <Title level={2} className="home-title">Top 10 Cryptocurrencies in the world</Title>
-        <Title level={3} className="show-more"><Link to="/crytocurrency/1">show more</Link></Title>
+        <Title level={2} className="home-title">
+          Top 10 Cryptocurrencies in the world
+        </Title>
+        <Title level={3} className="show-more">
+          <Link to="/cryptocurrencies">show more</Link>
+        </Title>
       </div>
-      <Cryptocurrencies simplified/>
+      {/* if simplified is true in the homepage component render 10 else 100 in cryptocurrencies component */}
+      <Cryptocurrencies simplified />
       <div className="home-heading-container">
-        <Title level={2} className="home-title">Latest Crypto News</Title>
-        <Title level={3} className="show-more"><Link to="/news">show more</Link></Title>
+        <Title level={2} className="home-title">
+          Latest Crypto News
+        </Title>
+        <Title level={3} className="show-more">
+          <Link to="/news">show more</Link>
+        </Title>
       </div>
-      <News simplified/>
+      <News simplified />
     </>
   );
 }
