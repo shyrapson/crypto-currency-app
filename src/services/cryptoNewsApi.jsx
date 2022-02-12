@@ -17,12 +17,12 @@ export const cryptoNewsApi = createApi({
   reducerPath: "cryptoNewsApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getCryptos: builder.query({
-      query: ({newsCategory,count}) =>createRequest(`/news/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`),
+    getCryptoNews: builder.query({
+      query: ({newsCategory,count}) =>createRequest(`/news/search?q=${newsCategory}&scount=${count}`),
     }),
   }),
 });
 
 // this will be imported in the component that it is needed
-export const { useGetCryptosNewsQuery } = cryptoNewsApi;
+export const { useGetCryptoNewsQuery } = cryptoNewsApi;
 
