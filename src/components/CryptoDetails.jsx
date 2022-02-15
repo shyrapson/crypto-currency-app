@@ -6,18 +6,21 @@ import { Row, Typography, Col, Select } from "antd";
 import {MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, 
   CheckOutlined, NumberOutlined, ThunderboltOutlined,} from "@ant-design/icons";
 import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
+import LineChart from "./LineChart";
 
 const { Title, Text } = Typography;
-const { Options } = Select;
+const { Option } = Select;
 
 function CryptoDetails() {
   // useParams takes the id in the url and simply allow you to use it as a variable
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  // const { data:coinHistory } = useGetCryptoDetailsQuery({coinId,timePeriod});
  
 const cryptoDetails = data?.data.coin
 console.log(cryptoDetails)
+
 
   // if (isFetching) return <Loader />;
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
@@ -45,6 +48,36 @@ console.log(cryptoDetails)
         <Title level={2} className="coin-name">
           {cryptoDetails?.name} ({cryptoDetails?.symbol})Price
         </Title>
+        <p>
+          {cryptoDetails?.name} View value statistics, market cap and supply.
+        </p>
+      </Col>
+      <Select
+        defaultValue="7d"
+        className="select-timeperiod"
+        placeholder="Select Time Period"
+        onChange={(value) => setTimePeriod(value)}
+      >
+        {time.map((date) => (
+          <Option key={date}>{date}</Option>
+        ))}
+      </Select>
+      {/* <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/> */}
+      <Col className="stats-container">
+        <Col className="coin-value-statistics">
+          <Col className="coin-value-statistics-heading">
+          <Title level={3} className="coin-datails" >{cryptoDetails?.name} Value statistics</Title>
+          <p>An overview showing the stats of {cryptoDetails?.name}</p>
+          </Col>
+          {stats.map(({icon,title,value})=>(
+            <Col className="coin-stats">
+<Col className="coin-stats-name">
+  <Text>{icon}</Text>
+  <Text>{title}</Text>
+</Col>
+            </Col>
+          ))}
+        </Col>
       </Col>
     </Col>
   );
