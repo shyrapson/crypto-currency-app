@@ -14,7 +14,6 @@ const createRequest = (url) => ({
   url,
   params: {
     referenceCurrencyUuid: 'yhjMzLPhuIDl',
-    timePeriod: '24h',
     tiers: '1',
     orderBy: 'marketCap',
     orderDirection: 'desc',
@@ -40,11 +39,16 @@ export const cryptoApi = createApi({
     getCryptoDetails: builder.query({
       query: (coinId) => createRequest(`/coin/${coinId}`),
     }),
+    getCryptoHistory: builder.query({
+      query: ({coinId,timePeriod}) => createRequest(`/coin/${coinId}/history?timePeriod=${timePeriod}`),
+    }),
   }),
 });
 
 // this will be imported in the component that it is needed
 export const {
   useGetCryptosQuery,
-  useGetCryptoDetailsQuery
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery
 } = cryptoApi;
+
