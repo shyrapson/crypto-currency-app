@@ -17,7 +17,7 @@ const App = () => {
           <div className="routes">
             <Routes>
             <Route path="/" element={<Homepage/>}/>
-              <Route path="/exchanges" element={<Exchanges/>}/>
+              <Route path="/exchange" element={<Exchanges/>}/>
               <Route path="/cryptocurrencies" element={<Cryptocurrencies/>}/>
               {/* 'coinid' means it can be dynamic{1 or 2 or 3 ....} */}
               <Route path="/crypto/:coinId" element={<CryptoDetails/>}/>
