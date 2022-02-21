@@ -3,7 +3,7 @@ import millify from "millify";
 import { Collapse, Row, Col, Typography, Avatar } from "antd";
 import { useGetExchangesQuery } from "../services/cryptoApi.js";
 import Loader from "./Loader.jsx";
-const { Text } = Typography;
+const { Text,Title } = Typography;
 const { Panel } = Collapse;
 
 
@@ -14,6 +14,7 @@ function Exchanges() {
   const exchangeList = data?.data?.exchanges;
   return (
     <>
+    
       <Row>
         <Col span={6}>Exchanges</Col>
         <Col span={6}>24h Trade Volume</Col>
@@ -21,6 +22,7 @@ function Exchanges() {
         <Col span={6}>Change</Col>
       </Row>
       <Row>
+        <Title >exchanges OTW...., thank you....</Title>
         {/* {exchangeList.map((exchange) => (
           <Col span={24}>
             <Collapse>
