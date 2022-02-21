@@ -18,10 +18,10 @@
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.1",
     "react-dom": "^17.0.2",
-    "react-linechart": "^1.1.12",
+    "react-linechart": "^1.1.9",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^3.0.1",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
@@ -50,5 +50,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shyrapson/crypto-currency-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shyrapson/crypto-currency-app/issues"
   }
 }
