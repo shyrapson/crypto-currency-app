@@ -5,9 +5,7 @@ import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
 function Cryptocurrencies({ simplified }) {
-  {
-    /* if simplified is true in the homepage component render 10 else 100 in cryptocurrencies component */
-  }
+  //  if simplified is true in the homepage component render 10 else 100 in cryptocurrencies component 
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
@@ -34,7 +32,7 @@ function Cryptocurrencies({ simplified }) {
         </div>
       )}
 
-      <Row gutter={(32, 32)} className="crpto-card-container">
+      <Row gutter={(32, 32)} className="crypto-card-container">
         {cryptos?.map((currency) => (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.uuid}>
            
