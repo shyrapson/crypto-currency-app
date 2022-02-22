@@ -3,6 +3,7 @@ import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader.jsx";
 
 function Cryptocurrencies({ simplified }) {
   //  if simplified is true in the homepage component render 10 else 100 in cryptocurrencies component 
@@ -18,10 +19,11 @@ function Cryptocurrencies({ simplified }) {
     setCryptos(filteredData);
   }, [cryptosList, searchTerm]);
 
-  if (isFetching) return "loading...";
+  if (isFetching) return <Loader/>;
 
   return (
     <>
+    
     {/* set simplified to be false so it wont render on the homepage */}
       {!simplified && (
         <div className="search-crypto">
@@ -32,7 +34,7 @@ function Cryptocurrencies({ simplified }) {
         </div>
       )}
 
-      <Row gutter={(32, 32)} className="crypto-card-container">
+      <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.uuid}>
            
