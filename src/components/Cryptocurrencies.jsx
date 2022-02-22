@@ -13,6 +13,7 @@ function Cryptocurrencies({ simplified }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    // filters cryptosList if it includes a searchTerm
     const filteredData = cryptosList?.data?.coins.filter((coin) =>
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -24,7 +25,7 @@ function Cryptocurrencies({ simplified }) {
   return (
     <>
     
-    {/* set simplified to be false so it wont render on the homepage */}
+    {/* set simplified to be false so the search bar  wont render on the homepage */}
       {!simplified && (
         <div className="search-crypto">
           <Input
